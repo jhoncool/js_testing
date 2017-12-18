@@ -1,4 +1,4 @@
-# js_testing
+# app for testing javascript developers
 
 > A Vue.js project
 
