@@ -1,6 +1,13 @@
 # app for testing javascript developers
 
-> A Vue.js project
+## [app](https://jhoncool.github.io/js_testing/)
+
+## Deploy Setup on GitHub Pages
+
+``` bash
+# deploy
+npm run deploy
+```
 
 ## Build Setup
 
