@@ -32,7 +32,7 @@ export default {
   props: {
     currentPage: {
       type: Number,
-      requare: true
+      required: true
     }
   },
   data () {

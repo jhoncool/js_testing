@@ -17,7 +17,7 @@ export default {
   props: {
     "countItems": {
       type: Number,
-      requare: true
+      required: true
     }
   },
   data () {
