@@ -1,28 +1,49 @@
 <template>
   <div id="app">
     <Configurator/>
-    <Question :md="mdText"/>
+    <Paginator 
+      :count-items="countItems"
+      @change-question="changeQuestion"
+    />
+    <Questions
+      :current-page="currentPage"
+    />
+    <Answers
+      :count-items="countItems"
+      :current-page="currentPage"
+    />
   </div>
 </template>
 
 <script>
 import Configurator from "./components/Configurator"
-import Question from "./components/Question"
+import Questions from "./components/Questions"
+import Answers from "./components/Answers"
+import Paginator from "./components/Paginator"
+import model from "./model/model.json"
 
 export default {
   name: 'app',
   components: {
     Configurator,
-    Question,
+    Questions,
+    Answers,
+    Paginator,
   },
   data() {
     return {
-      num: "9.0"
+      currentPage: 0,
+      model,
     }
   },
   computed: {
-    mdText() {
-      return require(`./questions/${this.num}.md`)
+    countItems() {
+      return this.model["questions-names"].length
+    }
+  },
+  methods: {
+    changeQuestion(btnIndex) {
+      this.currentPage = btnIndex
     }
   }
 }
@@ -38,7 +59,7 @@ export default {
   text-align: center;
   color: $vue-blue;
   font-size: 16px;
-  max-width: 1024px;
+  max-width: $width;
   margin: 0 auto;
 }
 </style>

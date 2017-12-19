@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <div>{{ msg }}</div>
-    <div>{{ model["test-text"] }}</div>
+  <div class="configurator">
+    <div>{{ reglament }}</div>
   </div>
 </template>
 
@@ -12,12 +11,19 @@ export default {
   name: 'Configurator',
   data () {
     return {
-      msg: 'Настройки',
       model,
     }
-  }
+  },
+  computed: {
+    reglament() {
+      return this.model["regulations"]
+    }
+  },
 }
 </script>
 
 <style lang="scss">
+.configurator {
+  margin-bottom: 15px;
+}
 </style>  
