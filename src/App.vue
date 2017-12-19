@@ -17,12 +17,12 @@ export default {
   },
   data() {
     return {
+      num: "9.0"
     }
   },
   computed: {
     mdText() {
-      const num = "0_0"
-      return require(`./questions/${num}.md`)
+      return require(`./questions/${this.num}.md`)
     }
   }
 }
