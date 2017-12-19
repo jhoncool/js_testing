@@ -13,11 +13,11 @@ export default {
   data () {
     return {
       msg: 'Настройки',
-      model
+      model,
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 </style>  

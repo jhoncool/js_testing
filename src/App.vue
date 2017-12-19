@@ -1,16 +1,29 @@
 <template>
   <div id="app">
     <Configurator/>
+    <Question :md="mdText"/>
   </div>
 </template>
 
 <script>
-import Configurator from './components/Configurator'
+import Configurator from "./components/Configurator"
+import Question from "./components/Question"
 
 export default {
   name: 'app',
   components: {
-    Configurator
+    Configurator,
+    Question,
+  },
+  data() {
+    return {
+    }
+  },
+  computed: {
+    mdText() {
+      const num = "0_0"
+      return require(`./questions/${num}.md`)
+    }
   }
 }
 </script>
@@ -19,12 +32,12 @@ export default {
 @import './variables.scss';
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $vue-blue;
-  font-size: 20px;
+  font-size: 16px;
   max-width: 1024px;
   margin: 0 auto;
 }

@@ -12,7 +12,8 @@
     "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -38,6 +39,7 @@
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.6",
     "semver": "^5.3.0",
