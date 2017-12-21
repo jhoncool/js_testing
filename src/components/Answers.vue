@@ -2,34 +2,27 @@
     <div class="answers">
       <textarea
         class="answer"
-        v-for="item in items"
-        v-show="item === currentPage"
-        :key="item"
+        v-for="num in arrQuestionsIndexes"
+        v-show="num === currentQuestionIndex"
+        :key="num"
       >
       </textarea>
   </div> 
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   name: "Answers",
-  props: {
-    currentPage: {
-      type: Number,
-      required: true
-    },
-    "countItems": {
-      type: Number,
-      required: true
-    }
-  },
-  data () {
-    return {}
-  },
   computed: {
-    items() {
-      return Array.apply(null, { length: this.countItems }).map((v, i) => i);
-    }
+    ...mapState([
+      'currentQuestionIndex',
+    ]),
+    ...mapGetters([
+      'countQuestions',
+      'arrQuestionsIndexes',
+    ])
   },
 }
 </script>

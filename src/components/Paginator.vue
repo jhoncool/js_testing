@@ -2,31 +2,29 @@
   <div class="paginator">
     <div
       class="paginator__item"  
-      v-for="item in items" 
-      :key="item"
-      @click="$emit('change-question', item)"
+      v-for="num in arrQuestionsIndexes" 
+      :key="num"
+      @click="$emit('change-question', num)"
+      :class="{ paginator__item_current: currentQuestionIndex === num }"
     >
-      {{ item }}
+      {{ num }}
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   name: "Paginator",
-  props: {
-    "countItems": {
-      type: Number,
-      required: true
-    }
-  },
-  data () {
-    return {}
-  },
   computed: {
-    items() {
-      return Array.apply(null, { length: this.countItems }).map((v, i) => i);
-    }
+    ...mapState([
+      'currentQuestionIndex',
+    ]),
+    ...mapGetters([
+      'countQuestions',
+      'arrQuestionsIndexes',
+    ])
   }
 }
 </script>
@@ -38,16 +36,24 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 .paginator__item {
+  $border-width: 0.2em;
   margin-bottom: 0.5em;
-  padding: 0.5em 2em;
+  padding: 0.4em 1.8em;
   border-radius: 7px;
   background-color: lightblue;
+  box-sizing: border-box;
   color: $vue-blue;
+  border: $border-width solid transparent;
+  transition: border 0.2s ease;
   &:hover {
     background-color: #82cde6;
     cursor: pointer;
+  }
+  &_current {
+    border: $border-width solid #c3b9b4;
   }
 }
 </style>

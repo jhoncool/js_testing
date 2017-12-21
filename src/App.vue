@@ -2,16 +2,10 @@
   <div id="app">
     <Configurator/>
     <Paginator 
-      :count-items="countItems"
       @change-question="changeQuestion"
     />
-    <Questions
-      :current-page="currentPage"
-    />
-    <Answers
-      :count-items="countItems"
-      :current-page="currentPage"
-    />
+    <Questions/>
+    <Answers/>
   </div>
 </template>
 
@@ -20,7 +14,8 @@ import Configurator from "./components/Configurator"
 import Questions from "./components/Questions"
 import Answers from "./components/Answers"
 import Paginator from "./components/Paginator"
-import model from "./model/model.json"
+import { mapState } from 'vuex'
+import { CHANGE_QUESTION } from './store/mutation-types'
 
 export default {
   name: 'app',
@@ -32,18 +27,16 @@ export default {
   },
   data() {
     return {
-      currentPage: 0,
-      model,
     }
   },
   computed: {
-    countItems() {
-      return this.model["questions-names"].length
-    }
+    ...mapState([
+      'currentQuestionIndex',
+    ])
   },
   methods: {
-    changeQuestion(btnIndex) {
-      this.currentPage = btnIndex
+    changeQuestion(questionIndex) {
+      this.$store.commit('CHANGE_QUESTION', { questionIndex })
     }
   }
 }

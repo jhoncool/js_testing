@@ -2,8 +2,8 @@
   <div class="questions">
     <div 
       class="question"
-      v-for="questionData in questionsText"
-      v-show="questionData.id === currentPage"
+      v-for="questionData in questionsTexts"
+      v-show="questionData.id === currentQuestionIndex"
       :key="questionData.id"
     >
       <vue-markdown>{{ questionData.text }}</vue-markdown>
@@ -13,32 +13,20 @@
 
 <script>
 import VueMarkdown from "vue-markdown"
-import model from "../model/model.json"
-const questionsText = []
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: "Questions",
   components: {
     VueMarkdown
   },
-  beforeCreate() {
-    model["questions-names"].forEach((name, i) => {
-      questionsText.push({
-        id: i,
-        text: require(`../questions/${name}.md`)
-      })
-    })
-  },
-  props: {
-    currentPage: {
-      type: Number,
-      required: true
-    }
-  },
-  data () {
-    return {
-      questionsText
-    }
+  computed: {
+    ...mapState([
+      'currentQuestionIndex',
+    ]),
+    ...mapGetters([
+      'questionsTexts',
+    ])    
   }
 }
 </script>
