@@ -20,7 +20,6 @@ export default {
   computed: {
     ...mapGetters([
       'currentQuestionIndex',
-      'countQuestions',
       'arrQuestionsIndexes',
     ])
   }

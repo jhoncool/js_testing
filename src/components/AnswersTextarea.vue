@@ -2,7 +2,8 @@
   <textarea
     class="answer"
     placeholder="Ответ"
-    v-model.lazy="message"
+    @keydown.tab="onTab"
+    v-model="message"
     spellcheck="false"
   >
   </textarea> 
@@ -31,6 +32,20 @@ export default {
       }
     }    
   },
+  methods: {
+    onTab(event) {
+      const { target } = event
+      const { selectionStart, selectionEnd } = target
+      if (selectionStart != null ) {
+        const separator = '\t'
+        const newValue = this.message.slice(0, selectionStart) + separator + this.message.slice(selectionEnd)
+        event.target.value = newValue
+        this.message = newValue
+        event.target.selectionStart = event.target.selectionEnd = selectionStart + separator.length;
+      }
+      event.preventDefault()
+    }
+  }
 }
 </script>
 
@@ -44,6 +59,11 @@ export default {
   min-height: 140px;
   text-align: left;
   font-size: 16px;
+  $tab-size: 2;
+  -o-tab-size: $tab-size;
+  -moz-tab-size: $tab-size;
+  -webkit-tab-size: $tab-size;
+  tab-size: $tab-size;
 }
 </style>  
 
