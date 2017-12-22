@@ -4,10 +4,11 @@ import * as types from './mutation-types'
 import model from "../model/model.json"
 import { loadState, saveStatePlugin } from "./localStorage"
 
-const storageData = loadState() || {
+const initStorage = {
   currentQuestionIndex: 0,
   answersTexts: []
 }
+const storageData = loadState() || initStorage
 
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
@@ -25,6 +26,9 @@ export default new Vuex.Store({
       const oldAnswers = [...state.localStorage.answersTexts]
       oldAnswers[answerIndex] = text
       state.localStorage.answersTexts = [...oldAnswers]
+    },
+    [types.RESET] (state) {
+      state.localStorage = JSON.parse(JSON.stringify(initStorage))
     },
   },
   getters: {

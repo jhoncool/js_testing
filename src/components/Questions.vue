@@ -1,10 +1,10 @@
 <template>
   <div class="questions">
     <div 
-      class="question"
       v-for="questionData in questionsTexts"
       v-show="questionData.id === currentQuestionIndex"
       :key="questionData.id"
+      class="question"
     >
       <vue-markdown>{{ questionData.text }}</vue-markdown>
     </div>

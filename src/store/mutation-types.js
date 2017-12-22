@@ -1,2 +1,3 @@
 export const CHANGE_QUESTION = 'CHANGE_QUESTION'
 export const UPDATE_ANSWER = 'UPDATE_ANSWER'
+export const RESET = 'RESET'
