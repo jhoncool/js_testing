@@ -13,7 +13,7 @@
 
 <script>
 import VueMarkdown from "vue-markdown"
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "Questions",
@@ -21,10 +21,8 @@ export default {
     VueMarkdown
   },
   computed: {
-    ...mapState([
-      'currentQuestionIndex',
-    ]),
     ...mapGetters([
+      'currentQuestionIndex',
       'questionsTexts',
     ])    
   }

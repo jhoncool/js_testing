@@ -13,15 +13,13 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "Paginator",
   computed: {
-    ...mapState([
-      'currentQuestionIndex',
-    ]),
     ...mapGetters([
+      'currentQuestionIndex',
       'countQuestions',
       'arrQuestionsIndexes',
     ])

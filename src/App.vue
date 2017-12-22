@@ -14,7 +14,7 @@ import Configurator from "./components/Configurator"
 import Questions from "./components/Questions"
 import Answers from "./components/Answers"
 import Paginator from "./components/Paginator"
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import { CHANGE_QUESTION } from './store/mutation-types'
 
 export default {
@@ -30,13 +30,13 @@ export default {
     }
   },
   computed: {
-    ...mapState([
+    ...mapGetters([
       'currentQuestionIndex',
     ])
   },
   methods: {
     changeQuestion(questionIndex) {
-      this.$store.commit('CHANGE_QUESTION', { questionIndex })
+      this.$store.commit(CHANGE_QUESTION, { questionIndex })
     }
   }
 }
