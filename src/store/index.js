@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as types from './mutation-types'
-import model from "../model/model.json"
-import { loadState, saveStatePlugin } from "./localStorage"
+import * as types from '@/store/mutation-types'
+import model from "@/model/model.json"
+import { loadState, saveStatePlugin } from "@/store/localStorage"
 
 const initStorage = {
   currentQuestionIndex: 0,
@@ -47,7 +47,7 @@ export default new Vuex.Store({
     questionsTexts: (state, getters) => {
       return state.questionsFilesNames.map((name, i) => ({
         id: i,
-        text: require(`../questions/${name}.md`)
+        text: require(`@/questions/${name}.md`)
       }));
     }
   },

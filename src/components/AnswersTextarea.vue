@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { UPDATE_ANSWER } from '../store/mutation-types'
+import { UPDATE_ANSWER } from '@/store/mutation-types'
 
 export default {
   name: "AnswersTextarea",

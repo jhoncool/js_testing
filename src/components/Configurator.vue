@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import model from "../model/model.json"
-import { RESET } from '../store/mutation-types'
+import model from "@/model/model.json"
+import { RESET } from '@/store/mutation-types'
 
 export default {
   name: 'Configurator',

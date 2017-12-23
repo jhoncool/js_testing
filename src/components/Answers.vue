@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import AnswersTextarea from './AnswersTextarea'
+import AnswersTextarea from '@/components/AnswersTextarea'
 import { mapGetters } from 'vuex'
 
 export default {

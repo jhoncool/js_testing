@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Configurator from "./components/Configurator"
-import Questions from "./components/Questions"
-import Answers from "./components/Answers"
-import Paginator from "./components/Paginator"
+import Configurator from "@/components/Configurator"
+import Questions from "@/components/Questions"
+import Answers from "@/components/Answers"
+import Paginator from "@/components/Paginator"
 import { mapGetters } from 'vuex'
-import { CHANGE_QUESTION } from './store/mutation-types'
+import { CHANGE_QUESTION } from '@/store/mutation-types'
 
 export default {
   name: 'app',
