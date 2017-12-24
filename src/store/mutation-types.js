@@ -1,3 +1,5 @@
 export const CHANGE_QUESTION = 'CHANGE_QUESTION'
 export const UPDATE_ANSWER = 'UPDATE_ANSWER'
-export const RESET = 'RESET'
+export const START_AGAIN = 'START_AGAIN'
+export const CHANGE_MODE = 'CHANGE_MODE'
+export const UPDATE_RATING = 'UPDATE_RATING'

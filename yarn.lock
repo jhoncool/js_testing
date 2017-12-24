@@ -5513,6 +5513,10 @@ vue-markdown@^2.2.4:
     markdown-it-task-lists "^2.0.1"
     markdown-it-toc-and-anchor "^4.1.2"
 
+vue-star-rating@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/vue-star-rating/-/vue-star-rating-1.5.1.tgz#535225a12029b1e3706f1f6901fb95350faf2832"
+
 vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.0.3.tgz#623658f81506aef9d121cdc113a4f5c9cac32df7"

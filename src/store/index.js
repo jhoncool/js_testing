@@ -6,7 +6,9 @@ import { loadState, saveStatePlugin } from "@/store/localStorage"
 
 const initStorage = {
   currentQuestionIndex: 0,
-  answersTexts: []
+  picked: '0',
+  ratings: [],
+  answersTexts: [],
 }
 const storageData = loadState() || initStorage
 
@@ -16,7 +18,8 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   state: {
     localStorage: JSON.parse(JSON.stringify(storageData)),
-    questionsFilesNames: model["questions-names"]
+    questionsFilesNames: model["questions-names"],
+    maxRating: 5
   },
   mutations: {
     [types.CHANGE_QUESTION] (state, { questionIndex }) {
@@ -27,13 +30,30 @@ export default new Vuex.Store({
       oldAnswers[answerIndex] = text
       state.localStorage.answersTexts = [...oldAnswers]
     },
-    [types.RESET] (state) {
+    [types.START_AGAIN] (state) {
       state.localStorage = JSON.parse(JSON.stringify(initStorage))
+    },
+    [types.CHANGE_MODE] (state, { value }) {
+      state.localStorage.picked = value
+    },
+    [types.UPDATE_RATING] (state, { value, index }) {
+      const oldRatings = [...state.localStorage.ratings]
+      oldRatings[index] = value
+      state.localStorage.ratings = [...oldRatings]
     },
   },
   getters: {
     answersTexts: (state, getters) => {
       return state.localStorage.answersTexts
+    },
+    currentRating: (state, getters) => {
+      return state.localStorage.ratings[getters.currentQuestionIndex]
+    },
+    allRatings: (state, getters) => {
+      return state.localStorage.ratings
+    },
+    picked: (state, getters) => {
+      return state.localStorage.picked
     },
     currentQuestionIndex: (state, getters) => {
       return state.localStorage.currentQuestionIndex

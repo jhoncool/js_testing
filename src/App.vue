@@ -4,6 +4,9 @@
     <Paginator 
       @change-question="changeQuestion"
     />
+    <transition name="flip">
+      <Review v-show="checkMode" />
+    </transition>
     <Questions/>
     <Answers/>
   </div>
@@ -14,6 +17,7 @@ import Configurator from "@/components/Configurator"
 import Questions from "@/components/Questions"
 import Answers from "@/components/Answers"
 import Paginator from "@/components/Paginator"
+import Review from "@/components/Review"
 import { mapGetters } from 'vuex'
 import { CHANGE_QUESTION } from '@/store/mutation-types'
 
@@ -24,15 +28,16 @@ export default {
     Questions,
     Answers,
     Paginator,
-  },
-  data() {
-    return {
-    }
+    Review,
   },
   computed: {
     ...mapGetters([
-      'currentQuestionIndex',
-    ])
+      "currentQuestionIndex",
+      "picked",
+    ]),
+    checkMode() {
+      return this.picked === '1' ? true : false;
+    }
   },
   methods: {
     changeQuestion(questionIndex) {
@@ -54,5 +59,12 @@ export default {
   font-size: 16px;
   max-width: $width;
   margin: 0 auto;
+}
+.flip-enter-active, .flip-leave-active {
+  transition: all 0.5s ease;
+}
+.flip-enter, .flip-leave-to {
+  opacity: 0;
+  transform: scale(1, 0);
 }
 </style>
