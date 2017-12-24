@@ -1,14 +1,20 @@
 <template>
   <div class="result">
-    Total: <span :class="percentageClass">{{ result }} %</span>
+    Total: <span :class="percentageClass">{{ percentage }} %</span>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+const TWEEN = require('@/assets/js/Tween.js').TWEEN
 
 export default {
   name: "Result",
+  data() {
+    return {
+      percentage: 0
+    }
+  },
   computed: {
     ...mapState([
       'maxRating'
@@ -29,8 +35,30 @@ export default {
         normal: this.result >= checkPoints[0] && this.result < checkPoints[1],
         good: this.result >= checkPoints[1]
       }
-    }    
-  },    
+    },    
+  },
+  watch: {
+    result(newValue, oldValue) {
+      function animate () {
+        if (TWEEN.update()) {
+          window.requestAnimationFrame(animate)
+        }
+      }
+      const tweenObj = { tweeningNumber: oldValue }
+      new TWEEN.Tween(tweenObj)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .to({ tweeningNumber: newValue }, 250)
+        .onUpdate(() => {
+          this.percentage = tweenObj.tweeningNumber.toFixed(0)
+        })
+        .start()
+
+      animate()
+    }
+  },
+  mounted() {
+    this.percentage = this.result
+  }    
 }
 </script>
 
